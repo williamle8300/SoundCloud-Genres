@@ -1,0 +1,69 @@
+<<<<<<< HEAD
+<!doctype html>
+<html>
+    <head>
+			
+	    <script src="http://j.mp/jqymin">//jQuery</script>
+
+			<!-- Page player core CSS -->
+			<link rel="stylesheet" type="text/css" href="SoundManager2/page-player.css" />
+			<link rel="stylesheet" type="text/css" href="SoundManager2/optional-themes.css" />
+      <!-- soundManager.useFlashBlock: related CSS -->
+			<link rel="stylesheet" type="text/css" href="SoundManager2/flashblock.css" />
+			<script type="text/javascript" src="SoundManager2/scripts/soundmanager2.js"></script>
+			
+			<script>
+
+			/* --------
+
+			  Config override: This demo uses shiny flash 9 stuff, overwriting Flash 8-based defaults
+			  Alternate PP_CONFIG object must be defined before soundManager.onready()/onload() fire.
+			  Alternately, edit the config in page-player.js to simply use the values below by default
+
+			-------- */
+
+			// demo only, but you can use these settings too..
+			soundManager.setup({
+			  flashVersion: 9,
+			  preferFlash: true, // for visualization effects
+			  url: 'SoundManager2/scripts/swf/',
+			  useHighPerformance: true, // keep flash on screen, boost performance
+			  wmode: 'transparent', // transparent SWF, if possible
+			});
+
+			// custom page player configuration
+
+			var PP_CONFIG = {
+			  autoStart: false,      // begin playing first sound when page loads
+			  playNext: true,        // stop after one sound, or play through list until end
+			  useThrottling: false,  // try to rate-limit potentially-expensive calls (eg. dragging position around)</span>
+//			  usePeakData: true,     // [Flash 9 only] whether or not to show peak data (left/right channel values) - nor noticable on CPU
+//			  useWaveformData: false,// [Flash 9 only] show raw waveform data - WARNING: LIKELY VERY CPU-HEAVY
+//			  useEQData: false,      // [Flash 9 only] show EQ (frequency spectrum) data
+//			  useFavIcon: false     // try to apply peakData to address bar (Firefox + Opera) - performance note: appears to make Firefox 3 do some temporary, heavy disk access/swapping/garbage collection at first(?) - may be too heavy on CPU
+			}
+
+			</script>
+
+			<!-- Page player main script -->
+			<script src="SoundManager2/scripts/page-player.js"></script>
+			
+      <script src="http://connect.soundcloud.com/sdk.js"></script>
+      <script src="script.js"></script>
+    </head>
+    <body>
+			<ul class="playlist dark"></ul>
+    </body>
+=======
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script src="app.js"></script>
+  </head>
+  <body>
+    <div id="reddit-content"></div>
+<p></p>
+  </body>
+>>>>>>> master
+</html>
