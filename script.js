@@ -40,10 +40,10 @@ SC.get('/tracks', filters, function(tracks){
 
     //render 4 tracks from songSet in HTML document      
     songSet = songSet.sort(sort_by('rank', false, parseInt)); //sort by rank
-    songSet = songSet.slice(0,200) //slice the top 4 tracks
+//    songSet = songSet.slice(0,4) //slice the top 4 tracks
     var songSetLen = songSet.length
     for(var i = 0; i < songSetLen; i++){          //
-      $('ul.playlist').append('<li><a type="audio/mp3" href="'+songSet[i].stream_url+'?consumer_key='+clientID+'">'+songSet[i].title+'&#8212;'+songSet[i].username+'</a></li>')
+      $('ul.playlist').append('<li><a type="audio/mp3" href="'+songSet[i].stream_url+'?consumer_key='+clientID+'"><span class="trackRank">'+songSet[i].rank+'</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="trackTitle">'+songSet[i].title+'</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="trackUsername">'+songSet[i].username+'</span></a></li>')
     }
     console.log(songSet, 'Track count: '+songSetLen) //debugging
 })
