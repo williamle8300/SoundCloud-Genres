@@ -11,6 +11,7 @@ Find the latest and greatest songs on SoundCloud. We're also thinking about offe
 ### 1.0
 - using search input
 - cool loading gif
+- improve "ranking" algorthim
 - use local storage for previous 4 searches
 - show popular searches
 - refactor code

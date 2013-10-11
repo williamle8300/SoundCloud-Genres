@@ -11,6 +11,13 @@ display: inline;
 }
 button#userQuery{
 display: block;
+margin-top: 1px;
+background-color: transparent;
+border: 3px white solid;
+font-weight: bold;
+}
+button#userQuery:hover{
+background-color: transparent;
 }
 .navbar-inverse {
 background-color: #F46800;
