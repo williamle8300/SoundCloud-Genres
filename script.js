@@ -2,11 +2,12 @@ var clientID = '212b7a5080f5d7f8e831583446771a02'
 var songSet = []
 var monthMark = '2013-09-10 09:24:50'
 var milliStamp = new Date(monthMark).getTime()
-var input = {genres: '', getGenres: function(){return this.genres}, setGenres: function(value){this.genres = value; filters.genres = this.genres; getTracks()} }
+var input = {genres: '', getGenres: function(){return this.genres}, setGenres: function(value){this.genres = value; filters.genres = this.genres} }
 
 var filters = {
   genres: input.getGenres(),
-  limit: 10,
+  limit: 200,
+//  limit: 10,
   created_at: {'from': monthMark},
   filter: 'streamable'
 }
@@ -26,7 +27,8 @@ $(function() {
       if(e.which == 13) { // Enter key
         	$("input#queryBox").blur(function() {
         		var value = $(this).val()
-            //- run getTracks()
+            input.setGenres(value)
+            getTracks()
         		$("button#userQuery").text(value)
         	})
           $(this).blur()
@@ -46,16 +48,15 @@ $(function() {
       e = e || window.event
       var charCode = (typeof e.which == "number") ? e.which : e.keyCode
       if(String.fromCharCode(charCode) === "#") {
-          input.setGenres(prompt("Type out the genre:"))
+          //input.setGenres(prompt("Type out the genre:"))
+          $('button#userQuery').click()
       }
   }
   //load first songSet
   getTracks()
 })()
 
-// create songSet array -- make bulk request for tracks
-//-- remove tracks with 'undef' stream_url
-//-- store them as indiv objects in songSet with all properties
+//Get and store tracks from SoundCloud in songSet
 function getTracks(){
   $('ul.playlist').empty()
   SC.get('/tracks', filters, function(tracks){

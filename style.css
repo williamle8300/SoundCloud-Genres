@@ -1,3 +1,10 @@
+input#queryBox{
+background: transparent;
+border: none;
+color: white;
+font-weight: bold;
+outline: 0;    
+}
 .navbar{
 height:80px;
 padding-top: 15px;
