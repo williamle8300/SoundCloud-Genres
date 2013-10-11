@@ -10,8 +10,8 @@ var songSet = []
 var monthMark = '2013-09-01 09:24:50'
 var milliStamp = new Date(monthMark).getTime()
 var filters = {
-  genres: 'electronic',
-  limit: 10,
+  genres: 'indie',
+  limit: 200,
   created_at: {
     'from': monthMark
   },
@@ -40,7 +40,7 @@ SC.get('/tracks', filters, function(tracks){
 
     //render 4 tracks from songSet in HTML document      
     songSet = songSet.sort(sort_by('rank', false, parseInt)); //sort by rank
-    songSet = songSet.slice(0,4) //slice the top 4 tracks
+    songSet = songSet.slice(0,200) //slice the top 4 tracks
     var songSetLen = songSet.length
     for(var i = 0; i < songSetLen; i++){          //
       $('ul.playlist').append('<li><a type="audio/mp3" href="'+songSet[i].stream_url+'?consumer_key='+clientID+'">'+songSet[i].title+'&#8212;'+songSet[i].username+'</a></li>')
