@@ -1,7 +1,7 @@
 SoundCloud-Genres
 =================
 
-# Upcoming
+## Upcoming
 - using search input
 - use local storage for previous 4 searches
 - add popular searches
