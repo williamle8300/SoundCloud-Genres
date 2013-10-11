@@ -1,10 +1,3 @@
-//find the best songs on soundcloud and enjoy it!
-//also offers subscription service to email top 4 tracks per week. ability to follow certain genres
-
-//- convert various components into functions
-//- add attributions acc. to SC's EULA
-//- add comment_count in ranking algorithm?
-
 var clientID = '212b7a5080f5d7f8e831583446771a02'
 var songSet = []
 var monthMark = '2013-09-10 09:24:50'
@@ -13,7 +6,7 @@ var input = {genres: '', getGenres: function(){return this.genres}, setGenres: f
 
 var filters = {
   genres: input.getGenres(),
-  limit: 200,
+  limit: 10,
   created_at: {'from': monthMark},
   filter: 'streamable'
 }
@@ -23,42 +16,28 @@ SC.initialize({
   client_id: clientID
 })
 
-//Place all DOM listeners in here
+//Put listeners here
 $(function() {
-	
-  //When div.edit me is clicked, run this function
-	$("#userQuery").click(function() {
-		//This if statement checks to see if there are 
-		//and children of div.editme are input boxes. If so,
-		//we don't want to do anything and allow the user
-		//to continue typing
-		if ($(this).children('input').length == 0) {
-		
-			//Create the HTML to insert into the div. Escape any " characters 
-			var inputbox = "<input type='text' id='inputUserQuery' value=\""+$(this).text()+"\">"
-			
-			//Insert the HTML into the div
-			$(this).html(inputbox)
-
-			//add listener when user clicks enter
-			$("#inputUserQuery").keyup(function(e) {
-              if (e.which == 13) // Enter key
-                  $(this).blur()
-      })
-      
-			//Immediately give the input box focus. The user
-			//will be expecting to immediately type in the input box,
-			//and we need to give them that ability
-			$("input#inputUserQuery").focus()
-			
-			//Once the input box loses focus, we need to replace the
-			//input box with the current text inside of it.
-			$("input#inputUserQuery").blur(function() {
-				var value = $(this).val()
-				$("#userQuery").text(value)
-			})
-		}
-	})
+  $("button#userQuery").click(function() {
+    var userPrompt = $(this).text()
+  	var inputbox = "<input type='text' id='queryBox' value=\""+userPrompt+"\">"
+  	$(this).html(inputbox)
+  	$("input#queryBox").keyup(function(e) {
+      if(e.which == 13) { // Enter key
+        	$("input#queryBox").blur(function() {
+        		var value = $(this).val()
+            //- run getTracks()
+        		$("button#userQuery").text(value)
+        	})
+          $(this).blur()
+      }    
+    })
+  	$("input#queryBox").focus()
+  	$("input#queryBox").blur(function() {
+      $(this).hide()
+      $("button#userQuery").text(userPrompt)
+  	})
+  })
 })
 
 ;(function init(){
@@ -66,7 +45,7 @@ $(function() {
   document.onkeypress = function(e) {
       e = e || window.event
       var charCode = (typeof e.which == "number") ? e.which : e.keyCode
-      if (String.fromCharCode(charCode) === "#") {
+      if(String.fromCharCode(charCode) === "#") {
           input.setGenres(prompt("Type out the genre:"))
       }
   }
@@ -82,7 +61,7 @@ function getTracks(){
   SC.get('/tracks', filters, function(tracks){
       var tracksLen = tracks.length
       for (var i = 0; i < tracksLen; i++){
-        if (tracks[i].stream_url === undefined){ //skip over those that don't have stream_url
+        if(tracks[i].stream_url === undefined){ //skip over those that don't have stream_url
           continue
         }
         //date difference. '0' means it was created at the exact time of monthMark. The higher the better for rank
