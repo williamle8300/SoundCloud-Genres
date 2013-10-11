@@ -1,30 +1,20 @@
 <!doctype html>
-<html>
-    <head>
-			
+	<html>
+		<head>
 	    <script src="http://j.mp/jqymin">//jQuery</script>
-			
+		
 			<!-- Bootstrap -->
 			<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+			<link rel="stylesheet" href="style.css" title="minor bootstrap styling">
 			<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-			<style type="text/css" media="screen">
-				.trackRank{font-family: monospace;font-size: 0.5em;}
-				.trackTitle{font-weight: bold;font-size: 0.5em;}
-				.trackUsername{font-size: 0.5em;}
-				* {
-				  -webkit-border-radius: 0 !important;
-				     -moz-border-radius: 0 !important;
-				          border-radius: 0 !important;
-				}
-			</style>
 
 			<!-- Page player core CSS -->
 			<link rel="stylesheet" type="text/css" href="SoundManager2/page-player.css" />
 			<link rel="stylesheet" type="text/css" href="SoundManager2/optional-themes.css" />
-      <!-- soundManager.useFlashBlock: related CSS -->
+	     <!-- soundManager.useFlashBlock: related CSS -->
 			<link rel="stylesheet" type="text/css" href="SoundManager2/flashblock.css" />
 			<script type="text/javascript" src="SoundManager2/scripts/soundmanager2.js"></script>
-			
+		
 			<script>
 
 			/* --------
@@ -50,24 +40,25 @@
 			  autoStart: false,      // begin playing first sound when page loads
 			  playNext: true,        // stop after one sound, or play through list until end
 			  useThrottling: false,  // try to rate-limit potentially-expensive calls (eg. dragging position around)</span>
-//			  usePeakData: true,     // [Flash 9 only] whether or not to show peak data (left/right channel values) - nor noticable on CPU
-//			  useWaveformData: false,// [Flash 9 only] show raw waveform data - WARNING: LIKELY VERY CPU-HEAVY
-//			  useEQData: false,      // [Flash 9 only] show EQ (frequency spectrum) data
-//			  useFavIcon: false     // try to apply peakData to address bar (Firefox + Opera) - performance note: appears to make Firefox 3 do some temporary, heavy disk access/swapping/garbage collection at first(?) - may be too heavy on CPU
+	//		  usePeakData: true,     // [Flash 9 only] whether or not to show peak data (left/right channel values) - nor noticable on CPU
+	//		  useWaveformData: false,// [Flash 9 only] show raw waveform data - WARNING: LIKELY VERY CPU-HEAVY
+	//		  useEQData: false,      // [Flash 9 only] show EQ (frequency spectrum) data
+	//		  useFavIcon: false     // try to apply peakData to address bar (Firefox + Opera) - performance note: appears to make Firefox 3 do some temporary, heavy disk access/swapping/garbage collection at first(?) - may be too heavy on CPU
 			}
-
 			</script>
 
 			<!-- Page player main script -->
 			<script src="SoundManager2/scripts/page-player.js"></script>
-			
-      <script src="http://connect.soundcloud.com/sdk.js"></script>
-      <script src="script.js"></script>
-    </head>
-    <body>
-			<div class="navbar navbar-inverse navbar-fixed-top"> <div class="container"> <div class="navbar-header"> <a class="navbar-brand" href="">SoundCloud Discovery</a> </div> <div class="pull-right navbar-collapse collapse"> <ul class="nav navbar-nav navbar-right"> <li> <a id="status" href="#"></a><input type="search"> </li> </ul> </div> </div> </div>
-			<div class="col-md-2"></div>
-			<div class="col-md-8"><ul class="playlist"></ul></div>
-			<div class="col-md-2"></div>
-    </body>
-</html>
+		
+	     <script src="http://connect.soundcloud.com/sdk.js"></script>
+	     <script src="script.js"></script>
+	   </head>
+	   <body>
+				<div class="navbar navbar-inverse"> <div class="container"> <div class="navbar-header"> <a class="navbar-brand" href="">SoundCloud Discovery</a> </div> <div class="pull-right navbar-collapse collapse"> <ul class="nav navbar-nav navbar-right"> <li> <a id="status" href="#"></a></li> </ul> </div> </div> </div>
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12"><ul class="playlist"></ul></div>
+					</div>
+				</div>
+		</body>
+	</html>

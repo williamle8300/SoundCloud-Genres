@@ -1,0 +1,27 @@
+.navbar-inverse {
+background-color: #F46800;
+color: #fff;
+border: 0;
+}
+.navbar-inverse .navbar-brand {
+color: #fff;
+}
+.navbar-inverse .navbar-brand:hover {
+color: #ccc;
+}
+.trackRank {
+font-family: monospace;
+font-size: 0.5em;
+}
+.trackTitle {
+font-weight: bold;
+font-size: 0.5em;
+}
+.trackUsername {
+font-size: 0.5em;
+}
+* {
+-webkit-border-radius: 0 !important;
+-moz-border-radius: 0 !important;
+border-radius: 0 !important;
+}
