@@ -13,7 +13,7 @@ var input = {genres: '', getGenres: function(){return this.genres}, setGenres: f
 
 var filters = {
   genres: input.getGenres(),
-  limit: 10,
+  limit: 200,
   created_at: {'from': monthMark},
   filter: 'streamable'
 }
