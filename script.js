@@ -7,13 +7,13 @@
 
 var clientID = '212b7a5080f5d7f8e831583446771a02'
 var songSet = []
-var monthMark = '2013-09-01 09:24:50'
+var monthMark = '2013-09-10 09:24:50'
 var milliStamp = new Date(monthMark).getTime()
 var input = {genres: '', getGenres: function(){return this.genres}, setGenres: function(value){this.genres = value; filters.genres = this.genres; getTracks()} }
                         
 var filters = {
   genres: input.getGenres(),
-  limit: 200,
+  limit: 10,
   created_at: {
     'from': monthMark
   },
