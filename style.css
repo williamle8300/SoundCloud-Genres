@@ -22,12 +22,16 @@ font-size: 3em;
 display: inline;
 padding-right: 3px;
 }
-div#userQuery {
+div#userQuery.btn-lg {
 display: inline-block;
+position:relative;
+top: -3px;
 margin-top: 1px;
+padding: 7px 15px;
 background-color: transparent;
-border: 3px white solid;
+font-size: 25px;
 font-weight: bold;
+border: 3px white solid;
 }
 div#userQuery:hover {
 background-color: transparent;
