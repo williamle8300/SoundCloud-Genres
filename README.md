@@ -2,9 +2,7 @@ SoundCloud Genres
 =================
 
 ## About
-"Find the latest, and greatest songs on SoundCloud"
-
-Find the latest and greatest songs on SoundCloud. We're also thinking about offering a weekly email subscription service that will send you download links for the Top 4 in your favorite #genres.
+Find the latest and greatest songs on SoundCloud. We're also thinking about offering a weekly email subscription service that will send you download links for the Top 4 in your favorite'd #genres.
 
 ## Upcoming
 
@@ -14,7 +12,7 @@ Find the latest and greatest songs on SoundCloud. We're also thinking about offe
 - cool loading gif
 - improve "ranking" algorthim
 - style!
-- use local storage for previous <2 searches
+- use local storage for previous 2 (or more) searches
 - refactor code
 - refactor css
 

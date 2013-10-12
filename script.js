@@ -6,10 +6,10 @@ var input = {query: '', getQuery: function(){return this.query}, setQuery: funct
 
 var filters = {
   tags: input.getQuery(),
-  limit: 10,
+  limit: 200,
 //  limit: 10,
   created_at: {'from': monthMark},
-  filter: 'streamable'
+//  filter: 'streamable'
 }
 
 //start SC with client_id
@@ -21,27 +21,27 @@ SC.initialize({
 $(function() {
   $("div#userQuery").click(function() {
     var userPrompt = $(this).text()
-  	var inputbox = "<input id='queryBox' value=\""+userPrompt+"\">"
-  	$(this).html(inputbox)
-  	$("input#queryBox").keyup(function(e) {
+  	var inputBox = '<input id="queryBox" value="'+userPrompt+'">'
+  	$(this).html(inputBox)
+  	$('input#queryBox').keyup(function(e) {
       if(e.which == 13) { // Enter key
           var value
-          if($(this).val() && $(this).val() !== '#'){
+          if($(this).val()){
             value = $(this).val()
           }
           else {value = userPrompt}
-        	$("input#queryBox").blur(function() {
+        	$('input#queryBox').blur(function() {
             input.setQuery(value)
             getTracks()
-        		$("div#userQuery").text(value)
+        		$('div#userQuery').text(value)
         	})
           $(this).blur()
       }    
     })
-  	$("input#queryBox").focus()
-  	$("input#queryBox").blur(function() {
+  	$('input#queryBox').focus()
+  	$('input#queryBox').blur(function() {
       $(this).hide()
-      $("div#userQuery").text(userPrompt)
+      $('div#userQuery').text(userPrompt)
   	})
   })
 })
@@ -50,9 +50,10 @@ $(function() {
   //let user provide userQuery
   document.onkeypress = function(e) {
       e = e || window.event
-      var charCode = (typeof e.which == "number") ? e.which : e.keyCode
-      if(String.fromCharCode(charCode) === "#") {
-          $('div#userQuery').click()
+      var charCode = (typeof e.which == 'number') ? e.which : e.keyCode
+      if(String.fromCharCode(charCode) === '#') {
+        event.preventDefault()
+        $('div#userQuery').click()
       }
   }
   //load first songSet
@@ -74,7 +75,6 @@ function getTracks(){
         // get and store all tracks in songSet
         songSet[i] = {createdAt: tracks[i].created_at, dateDiff: dateDiff, playbackCount: tracks[i].playback_count, favoritingsCount: tracks[i].favoritings_count, rank: rankScore, title: tracks[i].title, username: tracks[i].user.username, streamURL: tracks[i].stream_url, permalinkURL: tracks[i].permalink_url}
       }
-
       //render 4 tracks from songSet in HTML document      
       songSet = songSet.sort(sortBy('rank', false, parseInt)); //sort by rank
   //    songSet = songSet.slice(0,4) //slice the top 4 tracks
