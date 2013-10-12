@@ -2,10 +2,10 @@ var clientID = '212b7a5080f5d7f8e831583446771a02'
 var songSet = []
 var monthMark = '2013-09-10 09:24:50'
 var milliStamp = new Date(monthMark).getTime()
-var input = {genres: '', getGenres: function(){return this.genres}, setGenres: function(value){this.genres = value; filters.genres = this.genres} }
+var input = {genres: '', getGenres: function(){return this.genres}, setGenres: function(value){this.genres = value; filters.tags = this.genres} }
 
 var filters = {
-  genres: input.getGenres(),
+  tags: input.getGenres(),
   limit: 200,
 //  limit: 10,
   created_at: {'from': monthMark},
@@ -21,7 +21,7 @@ SC.initialize({
 $(function() {
   $("button#userQuery").click(function() {
     var userPrompt = $(this).text()
-  	var inputbox = "<input type='text' id='queryBox' value=\""+userPrompt+"\">"
+  	var inputbox = "<input id='queryBox' value=\""+userPrompt+"\">"
   	$(this).html(inputbox)
   	$("input#queryBox").keyup(function(e) {
       if(e.which == 13) { // Enter key
