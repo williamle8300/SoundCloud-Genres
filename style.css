@@ -20,6 +20,7 @@ border-radius: 0 !important;
 .navbar-brand {
 font-size: 3em;
 display: inline;
+padding-right: 3px;
 }
 div#userQuery {
 display: inline-block;

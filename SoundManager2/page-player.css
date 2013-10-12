@@ -119,7 +119,7 @@ ul.playlist li.sm2_playing:hover {
 }
 
 ul.playlist li.sm2_paused {
- background-color:#999;
+ background-color:#999 !important;
 }
 
 ul.playlist li.sm2_playing:hover a,
@@ -214,7 +214,7 @@ ul.playlist li.sm2_paused .controls .statusbar .position {
 }
 
 ul.playlist li .controls .statusbar .loading {
- background-color:#ddd;
+ background-color:#aaa;
 }
 
 ul.playlist li .controls .statusbar .position,
