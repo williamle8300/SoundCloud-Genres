@@ -6,7 +6,7 @@ var input = {query: '', getQuery: function(){return this.query}, setQuery: funct
 
 var filters = {
   tags: input.getQuery(),
-  limit: 200,
+  limit: 10,
 //  limit: 10,
   created_at: {'from': monthMark},
   filter: 'streamable'
@@ -19,17 +19,21 @@ SC.initialize({
 
 //Put listeners here
 $(function() {
-  $("button#userQuery").click(function() {
+  $("div#userQuery").click(function() {
     var userPrompt = $(this).text()
   	var inputbox = "<input id='queryBox' value=\""+userPrompt+"\">"
   	$(this).html(inputbox)
   	$("input#queryBox").keyup(function(e) {
       if(e.which == 13) { // Enter key
+          var value
+          if($(this).val() && $(this).val() !== '#'){
+            value = $(this).val()
+          }
+          else {value = userPrompt}
         	$("input#queryBox").blur(function() {
-        		var value = $(this).val()
             input.setQuery(value)
             getTracks()
-        		$("button#userQuery").text(value)
+        		$("div#userQuery").text(value)
         	})
           $(this).blur()
       }    
@@ -37,7 +41,7 @@ $(function() {
   	$("input#queryBox").focus()
   	$("input#queryBox").blur(function() {
       $(this).hide()
-      $("button#userQuery").text(userPrompt)
+      $("div#userQuery").text(userPrompt)
   	})
   })
 })
@@ -48,7 +52,7 @@ $(function() {
       e = e || window.event
       var charCode = (typeof e.which == "number") ? e.which : e.keyCode
       if(String.fromCharCode(charCode) === "#") {
-          $('button#userQuery').click()
+          $('div#userQuery').click()
       }
   }
   //load first songSet

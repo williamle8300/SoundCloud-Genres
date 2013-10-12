@@ -10,7 +10,7 @@ Find the latest and greatest songs on SoundCloud. We're also thinking about offe
 
 ### 1.0
 - using search input
-- show popular searches
+- suggest popular searches
 - cool loading gif
 - improve "ranking" algorthim
 - style!
