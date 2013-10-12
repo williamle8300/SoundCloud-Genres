@@ -2,10 +2,10 @@ var clientID = '212b7a5080f5d7f8e831583446771a02'
 var songSet = []
 var monthMark = '2013-09-10 09:24:50'
 var milliStamp = new Date(monthMark).getTime()
-var input = {genres: '', getGenres: function(){return this.genres}, setGenres: function(value){this.genres = value; filters.tags = this.genres} }
+var input = {query: '', getQuery: function(){return this.query}, setQuery: function(value){this.query = value; filters.tags = this.query} }
 
 var filters = {
-  tags: input.getGenres(),
+  tags: input.getQuery(),
   limit: 200,
 //  limit: 10,
   created_at: {'from': monthMark},
@@ -27,7 +27,7 @@ $(function() {
       if(e.which == 13) { // Enter key
         	$("input#queryBox").blur(function() {
         		var value = $(this).val()
-            input.setGenres(value)
+            input.setQuery(value)
             getTracks()
         		$("button#userQuery").text(value)
         	})
@@ -43,12 +43,11 @@ $(function() {
 })
 
 ;(function init(){
-  //let user provide userGenres
+  //let user provide userQuery
   document.onkeypress = function(e) {
       e = e || window.event
       var charCode = (typeof e.which == "number") ? e.which : e.keyCode
       if(String.fromCharCode(charCode) === "#") {
-          //input.setGenres(prompt("Type out the genre:"))
           $('button#userQuery').click()
       }
   }
