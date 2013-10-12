@@ -63,6 +63,7 @@ $(function() {
 //Get and store tracks from SoundCloud in songSet
 function getTracks(){
   $('ul.playlist').empty()
+  $('ul.playlist').html('<img id="loadGif" src="http://bradsknutson.com/wp-content/uploads/2013/04/page-loader.gif"/>')
   SC.get('/tracks', filters, function(tracks){
       var tracksLen = tracks.length
       for (var i = 0; i < tracksLen; i++){
@@ -79,6 +80,7 @@ function getTracks(){
       songSet = songSet.sort(sortBy('rank', false, parseInt)); //sort by rank
   //    songSet = songSet.slice(0,4) //slice the top 4 tracks
       var songSetLen = songSet.length
+      $('ul.playlist').empty()
       for(var i = 0; i < songSetLen; i++){          //
         $('ul.playlist').append('<li><a type="audio/mp3" href="'+songSet[i].streamURL+'?consumer_key='+clientID+'"><span class="trackRank">'+songSet[i].rank+'</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="trackTitle">'+songSet[i].title+'</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="trackUsername">'+songSet[i].username+'</span></a></li>')
       }

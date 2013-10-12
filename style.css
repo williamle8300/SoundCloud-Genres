@@ -1,36 +1,38 @@
-body{background-color: #ddd;}
-input#queryBox{
+body {
+background-image: url('imgs/bg.png');
+}
+input#queryBox {
 display: inline;
 background: transparent;
 border: none;
 color: white;
 font-weight: bold;
-outline: 0;    
+outline: 0;
 }
-.navbar{
-height:80px;
+.navbar {
+height: 80px;
 padding-top: 15px;
 -webkit-border-radius: 0 !important;
 -moz-border-radius: 0 !important;
 border-radius: 0 !important;
 }
-.navbar-brand{
+.navbar-brand {
 font-size: 3em;
 display: inline;
 }
-div#userQuery{
+div#userQuery {
 display: inline-block;
 margin-top: 1px;
 background-color: transparent;
 border: 3px white solid;
 font-weight: bold;
 }
-div#userQuery:hover{
+div#userQuery:hover {
 background-color: transparent;
 color: white;
 }
 .navbar {
-background-color: #F46800;
+background-color: #633D0E;
 color: #fff;
 border: 0;
 }
@@ -40,6 +42,12 @@ color: #fff;
 .navbar .navbar-brand:hover {
 color: #ccc;
 }
+
+#loadGif {
+display: block;
+margin: 0 auto;
+}
+
 .trackRank {
 font-family: monospace;
 font-size: 0.5em;
