@@ -1,6 +1,7 @@
 body {
-background-image: url('imgs/bg.png');
+background-color: #ddd;
 }
+/**/
 input#queryBox {
 display: inline;
 background: transparent;
@@ -32,7 +33,7 @@ background-color: transparent;
 color: white;
 }
 .navbar {
-background-color: #633D0E;
+background-color: #F46800;
 color: #fff;
 border: 0;
 }
@@ -42,12 +43,20 @@ color: #fff;
 .navbar .navbar-brand:hover {
 color: #ccc;
 }
-
+/**/
 #loadGif {
 display: block;
 margin: 0 auto;
 }
-
+/**/
+ul.playlist li {
+background-color: #ddd !important;
+}
+ul.playlist li:hover {
+background-color: #eee !important;
+}
+ul.playlist li.sm2_playing, ul.playlist li.sm2_playing{background-color: #F46800!important;}
+ul.playlist li.sm2_playing, ul.playlist li.sm2_playing:hover{background-color: #F46800!important;}
 .trackRank {
 font-family: monospace;
 font-size: 0.5em;
