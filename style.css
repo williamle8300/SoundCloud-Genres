@@ -1,75 +1,21 @@
-body {
-background-color: #ddd;
-}
+body{padding:100px;background-color:#ddd;}
 /**/
-input#queryBox {
-display: inline;
-background: transparent;
-border: none;
-color: white;
-font-weight: bold;
-outline: 0;
-}
-.navbar {
-height: 80px;
-padding-top: 15px;
--webkit-border-radius: 0 !important;
--moz-border-radius: 0 !important;
-border-radius: 0 !important;
-}
-.navbar-brand {
-font-size: 3em;
-display: inline;
-padding-right: 3px;
-}
-div#userQuery.btn-lg {
-display: inline-block;
-position:relative;
-top: -3px;
-margin-top: 1px;
-padding: 7px 15px;
-background-color: transparent;
-font-size: 25px;
-font-weight: bold;
-border: 3px white solid;
-}
-div#userQuery:hover {
-background-color: transparent;
-color: white;
-}
-.navbar {
-background-color: #F46800;
-color: #fff;
-border: 0;
-}
-.navbar .navbar-brand {
-color: #fff;
-}
-.navbar .navbar-brand:hover {
-color: #ccc;
-}
+.navbar{background-color:#F46800;color:#fff;border:0;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=85)";filter:alpha(opacity=85);-moz-opacity:0.85;-khtml-opacity:0.85;opacity:0.85;}
+.navbar .navbar-brand{color:#fff;}
+.navbar .navbar-brand:hover{color:#ccc;}
 /**/
-#loadGif {
-display: block;
-margin: 0 auto;
-}
+input#queryBox{display:inline;background:transparent;border:none;color:white;font-weight:bold;outline:0;}
+.navbar{height:80px;padding-top:15px;-webkit-border-radius:0 !important;-moz-border-radius:0 !important;border-radius:0 !important;}
+.navbar-brand{font-size:3em;display:inline;padding-right:3px;}
+div#userQuery.btn-lg{display:inline-block;position:relative;top:-3px;margin-top:1px;padding:7px 15px;background-color:transparent;font-size:25px;font-weight:bold;border:3px white solid;}
+div#userQuery:hover{background-color:transparent;color:white;}
 /**/
-ul.playlist li {
-background-color: #ddd !important;
-}
-ul.playlist li:hover {
-background-color: #eee !important;
-}
-ul.playlist li.sm2_playing, ul.playlist li.sm2_playing{background-color: #F46800!important;}
-ul.playlist li.sm2_playing, ul.playlist li.sm2_playing:hover{background-color: #F46800!important;}
-.trackRank {
-font-family: monospace;
-font-size: 0.5em;
-}
-.trackTitle {
-font-weight: bold;
-font-size: 0.5em;
-}
-.trackUsername {
-font-size: 0.5em;
-}
+#loadGif{display:block;margin:0 auto;}
+/**/
+ul.playlist li{background-color:#ddd !important;}
+ul.playlist li:hover{background-color:#eee !important;}
+ul.playlist li.sm2_playing,ul.playlist li.sm2_playing{background-color:#F46800!important;}
+ul.playlist li.sm2_playing,ul.playlist li.sm2_playing:hover{background-color:#F46800!important;}
+.trackRank{font-family:monospace;font-size:0.8em;}
+.trackTitle{font-weight:bold;font-size:0.8em;}
+.trackUsername{font-size:0.8em;}
