@@ -72,11 +72,11 @@ function getTracks(){
     for (var i = 0; i < tracksLen; i++){
       //if(tracks[i].stream_url === undefined) continue //skip over those that don't have stream_url
       //ranking algorithm
-      var tempDate = tracks[i].created_at               // formatting SC's created_at for computation
-      tempDate = tempDate.split(' ')                    //                              
-      tempDate = tempDate[0].split('/')                 //                              
-      tempDate = new Date(tempDate)                     //                              
-      dateDiff = tempDate - monthMark                   // ...get 3 fields for algorithm
+      var tempDate = tracks[i].created_at                   // formatting SC's created_at to js Date format
+      tempDate = tempDate.split(' ')                        //                              
+      tempDate = tempDate[0].split('/')                     //                              
+      tempDate = new Date(tempDate)                         //                              
+      dateDiff = tempDate - monthMark                       // ...get 3 fields for algorithm
       playbackCount = tracks[i].playback_count || 1         //
       favoritingsCount = tracks[i].favoritings_count || 1   // 
       dateDiffTotal += dateDiff                             // meanwhile keep the running totals for later use
