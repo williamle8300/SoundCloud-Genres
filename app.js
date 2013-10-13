@@ -1,13 +1,13 @@
 var clientID = '212b7a5080f5d7f8e831583446771a02'
 var songSet = []
-var monthMark = '2013-09-10 09:24:50'
-var milliMonthMark = new Date(monthMark).getTime()
+var monthMark = new Date('09-10-2013')
+var SCmonthMark = '2013-09-10'
 var input = {query: '', getQuery: function(){return this.query}, setQuery: function(value){this.query = value; filters.tags = this.query} }
 
 var filters = {
   q: input.getQuery(),
-// limit: 200,
-//  created_at: {'from': monthMark},
+ limit: 200,
+  created_at: {'from': SCmonthMark +' 00:00:00'},
 //  filter: 'streamable'
 }
 
@@ -64,29 +64,34 @@ function getTracks(){
   $('ul.playlist').empty()
   $('ul.playlist').html('<img id="loadGif" src="http://bradsknutson.com/wp-content/uploads/2013/04/page-loader.gif"/>')
   SC.get('/tracks', filters, function(tracks){
-    var dateDiff, dateDiffTotal, dateDiffPercentile, dateDiffWeighting = '70%'
-    var playbackCount, playbackTotal, playbackPercentile, playbackWeighting = '100%'
-    var favoritingsCount, favoritingsTotal, favoritingsPercentile, favoritingsWeighting = '100%'
+    var dateDiff = 0, dateDiffTotal = 0, dateDiffPercentile = 0, dateDiffWeighting = 0.70
+    var playbackCount = 0, playbackTotal = 0, playbackPercentile = 0, playbackWeighting = 1
+    var favoritingsCount = 0, favoritingsTotal = 0, favoritingsPercentile = 0, favoritingsWeighting = 1
     var rankScore
     var tracksLen = tracks.length
     for (var i = 0; i < tracksLen; i++){
       //if(tracks[i].stream_url === undefined) continue //skip over those that don't have stream_url
       //ranking algorithm
-      dateDiff = Math.round((new Date(tracks[i].created_at).getTime()) - milliMonthMark) //get pertinent track info for algorithm //milliseconds between milliMonthMark and created_at
-      playbackCount = tracks[i].playback_count //
-      favoritingsCount = tracks[i].favoritings_count //
-      dateDiffTotal += dateDiff //create running totals
-      playbackTotal += playbackCount //
-      favoritingsTotal += favoritingsCount //
+      var tempDate = tracks[i].created_at               // formatting SC's created_at for computation
+      tempDate = tempDate.split(' ')                    //                              
+      tempDate = tempDate[0].split('/')                 //                              
+      tempDate = new Date(tempDate)                     //                              
+      dateDiff = tempDate - monthMark                   // ...get 3 fields for algorithm
+      playbackCount = tracks[i].playback_count || 1         //
+      favoritingsCount = tracks[i].favoritings_count || 1   // 
+      dateDiffTotal += dateDiff                             // meanwhile keep the running totals for later use
+      playbackTotal += playbackCount                        //
+      favoritingsTotal += favoritingsCount                  //
       // store all tracks in songSet
       songSet[i] = {createdAt: tracks[i].created_at, dateDiff: dateDiff, playbackCount: playbackCount, favoritingsCount: favoritingsCount, title: tracks[i].title, username: tracks[i].user.username, streamURL: tracks[i].stream_url, permalinkURL: tracks[i].permalink_url}
     }
     var songSetLen = songSet.length
+    console.log(dateDiffTotal, playbackTotal, favoritingsTotal) //debug
     for (var i = 0; i < songSetLen; i++){
-      dateDiffPercentile = (songSet[i]['dateDiff'] / dateDiffTotal)
-      playbackPercentile = (songSet[i]['playbackCount'] / playbackTotal)
-      favoritingsPercentile = (songSet[i]['favoritingsCount'] / favoritingsTotal)
-      rankScore = dateDiffPercentile + playbackPercentile + favoritingsPercentile
+      dateDiffPercentile = (songSet[i]['dateDiff'] / dateDiffTotal) * dateDiffWeighting; console.log(dateDiffPercentile)
+      playbackPercentile = (songSet[i]['playbackCount'] / playbackTotal) * playbackWeighting; console.log(playbackPercentile)
+      favoritingsPercentile = (songSet[i]['favoritingsCount'] / favoritingsTotal) * favoritingsWeighting; console.log(favoritingsPercentile)
+      rankScore = (dateDiffPercentile + playbackPercentile + favoritingsPercentile) * 100000000000000
       songSet[i]['rank'] = rankScore
     }
     //sort tracks by rank
