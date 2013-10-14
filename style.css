@@ -16,6 +16,7 @@ ul.playlist li{background-color:#ddd !important;}
 ul.playlist li:hover{background-color:#eee !important;}
 ul.playlist li.sm2_playing,ul.playlist li.sm2_playing{background-color:#F46800!important;}
 ul.playlist li.sm2_playing,ul.playlist li.sm2_playing:hover{background-color:#F46800!important;}
-.trackRank{font-family:monospace;font-size:0.8em;}
-.trackTitle{font-weight:bold;font-size:0.8em;}
-.trackUsername{font-size:0.8em;}
+/**/
+.trackRank{font-family:monospace;font-size:0.55em;}
+.trackTitle{font-weight:bold;font-size:0.6em;}
+.trackUsername{font-size:0.6em;}

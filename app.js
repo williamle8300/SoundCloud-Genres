@@ -7,7 +7,7 @@ var input = {query: '', getQuery: function(){return this.query}, setQuery: funct
 var filters = {
   q: input.getQuery(),
  limit: 200,
-  created_at: {'from': SCmonthMark +' 00:00:00'},
+//  created_at: {'from': SCmonthMark +' 00:00:00'},
 //  filter: 'streamable'
 }
 
