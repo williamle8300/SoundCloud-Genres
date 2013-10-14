@@ -7,7 +7,6 @@ Find the latest and greatest songs on SoundCloud. We're also thinking about offe
 ## Upcoming
 
 ### 1.0
-- refactor code
 - improve "ranking" algorthim
 - handle 'no results / 503' event
 - keyboard shortcut
