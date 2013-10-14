@@ -5,9 +5,10 @@ var SCmonthMark = '2013-09-10'
 var input = {query: '', getQuery: function(){return this.query}, setQuery: function(value){this.query = value; filters.tags = this.query} }
 
 var filters = {
-  q: input.getQuery(),
- limit: 200,
-//  created_at: {'from': SCmonthMark +' 00:00:00'},
+//  q: input.getQuery(),
+  tags: input.getQuery(),
+//  limit: 200, //comment-out to let SC deal the hand
+  created_at: {'from': SCmonthMark +' 00:00:00'},
 //  filter: 'streamable'
 }
 
@@ -64,7 +65,7 @@ function getTracks(){
   $('ul.playlist').empty()
   $('ul.playlist').html('<img id="loadGif" src="http://bradsknutson.com/wp-content/uploads/2013/04/page-loader.gif"/>')
   SC.get('/tracks', filters, function(tracks){
-    var dateDiff = 0, dateDiffTotal = 0, dateDiffPercentile = 0, dateDiffWeighting = 0.70
+    var dateDiff = 0, dateDiffTotal = 0, dateDiffPercentile = 0, dateDiffWeighting = 1
     var playbackCount = 0, playbackTotal = 0, playbackPercentile = 0, playbackWeighting = 1
     var favoritingsCount = 0, favoritingsTotal = 0, favoritingsPercentile = 0, favoritingsWeighting = 1
     var rankScore
@@ -96,7 +97,7 @@ function getTracks(){
     }
     //sort tracks by rank
     songSet = songSet.sort(sortBy('rank', false, parseInt));
-//    songSet = songSet.slice(0,4) //slice the top 4 tracks
+    songSet = songSet.slice(0,4) //slice the top 4 tracks
     $('ul.playlist').empty()
     for(var i = 0; i < songSetLen; i++){          //
       $('ul.playlist').append('<li><a type="audio/mp3" href="'+songSet[i].streamURL+'?consumer_key='+clientID+'"><span class="trackRank">'+songSet[i].rank+'</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="trackTitle">'+songSet[i].title+'</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="trackUsername">'+songSet[i].username+'</span></a></li>')
