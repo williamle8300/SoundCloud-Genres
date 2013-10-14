@@ -1,3 +1,9 @@
+// create socialRank
+// which is combined with dateDiff (now - created_at)
+// for rank
+// sort by rank
+
+
 var clientID = '212b7a5080f5d7f8e831583446771a02'
 var songSet = []
 var monthMark = new Date('09-10-2013')
@@ -8,7 +14,7 @@ var filters = {
 //  q: input.getQuery(),
   tags: input.getQuery(),
 //  limit: 200, //comment-out to let SC deal the hand
-  created_at: {'from': SCmonthMark +' 00:00:00'},
+//  created_at: {'from': SCmonthMark +' 00:00:00'},
 //  filter: 'streamable'
 }
 
@@ -56,19 +62,20 @@ $(function() {
         $('div#userQuery').click()
       }
   }
-  //load first songSet
+  // load initial tracks
   getTracks()
 })()
 
-//Get and store tracks from SoundCloud in songSet
+//Get and store tracks from SoundCloud
 function getTracks(){
   $('ul.playlist').empty()
   $('ul.playlist').html('<img id="loadGif" src="http://bradsknutson.com/wp-content/uploads/2013/04/page-loader.gif"/>')
-  SC.get('/tracks', filters, function(tracks){
+  SC.get('/tracks', filters, function(tracks){ //call out to SC servers
     var dateDiff = 0, dateDiffTotal = 0, dateDiffPercentile = 0, dateDiffWeighting = 1
     var playbackCount = 0, playbackTotal = 0, playbackPercentile = 0, playbackWeighting = 1
     var favoritingsCount = 0, favoritingsTotal = 0, favoritingsPercentile = 0, favoritingsWeighting = 1
     var rankScore
+    var stagedTrack
     var tracksLen = tracks.length
     for (var i = 0; i < tracksLen; i++){
       //if(tracks[i].stream_url === undefined) continue //skip over those that don't have stream_url
@@ -83,26 +90,26 @@ function getTracks(){
       dateDiffTotal += dateDiff                             // meanwhile keep the running totals for later use
       playbackTotal += playbackCount                        //
       favoritingsTotal += favoritingsCount                  //
-      // store all tracks in songSet
-      songSet[i] = {createdAt: tracks[i].created_at, dateDiff: dateDiff, playbackCount: playbackCount, favoritingsCount: favoritingsCount, title: tracks[i].title, username: tracks[i].user.username, streamURL: tracks[i].stream_url, permalinkURL: tracks[i].permalink_url}
+      //get and store pertinent properties for each track
+      stagedTrack = tracks[i]
+      tracks[i] = {createdAt: stagedTrack.created_at, dateDiff: dateDiff, playbackCount: playbackCount, favoritingsCount: favoritingsCount, title: stagedTrack.title, username: stagedTrack.user.username, streamURL: stagedTrack.stream_url, permalinkURL: stagedTrack.permalink_url, artworkURL: stagedTrack.artwork_url}
     }
-    var songSetLen = songSet.length
     console.log(dateDiffTotal, playbackTotal, favoritingsTotal) //debug
-    for (var i = 0; i < songSetLen; i++){
-      dateDiffPercentile = (songSet[i]['dateDiff'] / dateDiffTotal) * dateDiffWeighting; console.log(dateDiffPercentile)
-      playbackPercentile = (songSet[i]['playbackCount'] / playbackTotal) * playbackWeighting; console.log(playbackPercentile)
-      favoritingsPercentile = (songSet[i]['favoritingsCount'] / favoritingsTotal) * favoritingsWeighting; console.log(favoritingsPercentile)
+    for (var i = 0; i < tracksLen; i++){
+      dateDiffPercentile = (tracks[i]['dateDiff'] / dateDiffTotal) * dateDiffWeighting; console.log(dateDiffPercentile)
+      playbackPercentile = (tracks[i]['playbackCount'] / playbackTotal) * playbackWeighting; console.log(playbackPercentile)
+      favoritingsPercentile = (tracks[i]['favoritingsCount'] / favoritingsTotal) * favoritingsWeighting; console.log(favoritingsPercentile)
       rankScore = (dateDiffPercentile + playbackPercentile + favoritingsPercentile) * 100000000000000
-      songSet[i]['rank'] = rankScore
+      tracks[i]['rank'] = rankScore
     }
     //sort tracks by rank
-    songSet = songSet.sort(sortBy('rank', false, parseInt));
-    songSet = songSet.slice(0,4) //slice the top 4 tracks
+    tracks = tracks.sort(sortBy('rank', false, parseInt));
+    tracks = tracks.slice(0,8) //slice the top 8 tracks
     $('ul.playlist').empty()
-    for(var i = 0; i < songSetLen; i++){          //
-      $('ul.playlist').append('<li><a type="audio/mp3" href="'+songSet[i].streamURL+'?consumer_key='+clientID+'"><span class="trackRank">'+songSet[i].rank+'</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="trackTitle">'+songSet[i].title+'</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="trackUsername">'+songSet[i].username+'</span></a></li>')
+    for(var i = 0; i < tracksLen; i++){          //
+      $('ul.playlist').append('<li><a type="audio/mp3" href="'+tracks[i].streamURL+'?consumer_key='+clientID+'"><span class="trackRank">'+tracks[i].rank+'</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="trackTitle">'+tracks[i].title+'</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="trackUsername">'+tracks[i].username+'</span></a></li>')
     }
-    console.log(songSet, 'Track count: '+songSetLen) //debugging
+    console.log(tracks, 'Track count: '+tracksLen) //debugging
   })
 }
 

@@ -7,14 +7,14 @@ Find the latest and greatest songs on SoundCloud. We're also thinking about offe
 ## Upcoming
 
 ### 1.0
+- refactor code
 - improve "ranking" algorthim
 - handle 'no results / 503' event
 - keyboard shortcut
+- refactor css
 - style!
 	- album cover
 - use local storage for previous 2 (or more) searches
-- refactor code
-- refactor css
 
 ### 2.0
 - add tag search
