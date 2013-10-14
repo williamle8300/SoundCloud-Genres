@@ -5,7 +5,7 @@
 
 
 var clientID = '212b7a5080f5d7f8e831583446771a02'
-var songSet = []
+var tracks = []
 var monthMark = new Date('09-10-2013')
 var SCmonthMark = '2013-09-10'
 var input = {query: '', getQuery: function(){return this.query}, setQuery: function(value){this.query = value; filters.tags = this.query} }
@@ -103,7 +103,7 @@ function getTracks(){
       tracks[i]['rank'] = rankScore
     }
     //sort tracks by rank
-    tracks = tracks.sort(sortBy('rank', false, parseInt));
+//    tracks = tracks.sort(sortBy('rank', false, parseInt));
     tracks = tracks.slice(0,8) //slice the top 8 tracks
     $('ul.playlist').empty()
     for(var i = 0; i < tracksLen; i++){          //
