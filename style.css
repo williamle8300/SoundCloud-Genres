@@ -1,4 +1,4 @@
-body{padding:100px 0 0;background-color:#ddd;}
+body{padding 0 0;background-color:#ddd;}
 /**/
 .navbar{background-color:#F46800;color:#fff;border:0;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=97)";filter:alpha(opacity=97);-moz-opacity:0.97;-khtml-opacity:0.97;opacity:0.97;}
 .navbar .navbar-brand{color:#fff;}
@@ -11,3 +11,5 @@ div#userQuery.btn-lg{display:inline-block;position:relative;top:-3px;margin-top:
 div#userQuery:hover{background-color:transparent;color:white;}
 /**/
 #loadGif{display:block;margin:0 auto;}
+/**/
+#tracksPage{position: relative;margin-top: -20px;}
