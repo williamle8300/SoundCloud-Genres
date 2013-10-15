@@ -7,15 +7,16 @@ Find the latest and greatest songs on SoundCloud. We're also thinking about offe
 ## Upcoming
 
 ### 1.0
-- improve "ranking" algorthim
-- handle 'no results / 503' event
-- keyboard shortcut
-- refactor css
 - style!
 	- album cover
-- use local storage for previous 2 (or more) searches
+- refactor code
+- loading gif
+- handle 'no results / 503' event
+- refactor css
 
 ### 2.0
+- keyboard shortcuts
+	- use local storage for previous 2 (or more) searches
 - add tag search
 - "next 10 tracks" button
 - add comment_count in ranking algorithm?

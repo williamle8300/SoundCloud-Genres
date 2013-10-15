@@ -141,8 +141,11 @@ ul.playlist.use-peak li .peak {
 
 ul.playlist li.sm2_playing .controls,
 ul.playlist li.sm2_paused .controls {
- position:relative;
  display:block;
+ position:relative;
+ clear:left;
+ padding: 0.33em 0 0;
+ background-color: transparent;
 }
 
 ul.playlist.use-peak li.sm2_playing .peak,
@@ -322,3 +325,36 @@ ul.playlist li .peak .r {
 #control-template {
  display:none;
 }
+
+
+
+ul.playlist li{background-color:#ddd !important;width: 100%; float: left;}
+ul.playlist li:hover{background-color:#eee !important;}
+
+/*Default + hover state, "click to play":*/
+
+li.sm2_link {}
+li.sm2_link:hover {}
+
+/*Playing + hover state, "click to pause":*/
+
+li.sm2_playing {}
+li.sm2_playing:hover {}
+
+/*Paused + hover state, "click to resume":*/
+
+li.sm2_paused {}
+li.sm2_paused:hover {}
+
+/**/
+ul.playlist li.sm2_playing,ul.playlist li.sm2_playing{background-color:#F46800!important;}
+ul.playlist li.sm2_playing,ul.playlist li.sm2_playing:hover{background-color:#F46800!important;}
+/**/
+.one {display: block;width:100px; height:100px;float:left;}
+.two{display: block;padding: 0 0 0 130px;font-size: 1.5em;line-height: 0.8em;}
+.three{display: block;padding: 0 0 0 130px;font: normal 0.5em monospace;}
+/**/
+.trackTitle{font-weight:bold;font-size:0.6em;}
+.trackUsername{font-size:0.6em;}
+.artwork{padding: 0em;}
+.trackRank{font-family:monospace;font-size:0.55em;}

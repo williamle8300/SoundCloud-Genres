@@ -1,4 +1,9 @@
-//Source: http://stackoverflow.com/questions/979256/sorting-an-array-of-javascript-objects
+/*Source: http://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript*/
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+/*Source: http://stackoverflow.com/questions/979256/sorting-an-array-of-javascript-objects*/
 function sortBy(field, reverse, primer){
    var key = function (x) {return primer ? primer(x[field]) : x[field]}
    return function (a,b) {
@@ -9,6 +14,8 @@ function sortBy(field, reverse, primer){
 
 /*
  * Date Format 1.2.3
+ * http://blog.stevenlevithan.com/archives/date-time-format
+ * 
  * (c) 2007-2009 Steven Levithan <stevenlevithan.com>
  * MIT license
  *
