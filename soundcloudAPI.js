@@ -3,13 +3,13 @@
 // for rank
 // sort by rank
 var clientID = '212b7a5080f5d7f8e831583446771a02'
-var tracks = []
 var monthMark = new Date()
-var SCmonthMark = '2013-09-14'
+//var SCmonthMark = '2013-01-01'
 var input = {query: '', getQuery: function(){return this.query}, setQuery: function(value){this.query = value; filters.tags = this.query} }
 var filters = {
   q: input.getQuery(),
-  created_at: {'from': SCmonthMark +' 00:00:00'}
+//  limit: 200,
+//  created_at: {'from': SCmonthMark +' 00:00:00'}
 }
 
 SC.initialize({
@@ -26,7 +26,7 @@ function getTracks(){
       return
     }  
     console.log(typeof tracks)
-    var dateDiff = 0, dateDiffTotal = 0, dateDiffPercentile = 0, dateDiffWeighting = 1
+    var dateDiff = 0, dateDiffTotal = 0, dateDiffPercentile = 0, dateDiffWeighting = 1.5
     var tempDate
     var playbackCount = 0, playbackTotal = 0, playbackPercentile = 0, playbackWeighting = 1
     var favoritingsCount = 0, favoritingsTotal = 0, favoritingsPercentile = 0, favoritingsWeighting = 1
@@ -37,7 +37,7 @@ function getTracks(){
     for (var i = 0; i < tracksLen; i++){
       tempDate = (tracks[i].created_at.split(' '))[0].split('/')                             // get the milliseconds of created_at
       tempDate = new Date(tempDate[1] +'/'+ tempDate[2] +'/'+ tempDate[0])                   //
-      dateDiff = (1 / (monthMark - tempDate)) * 10000000000                       // ...get 3 fields for algorithm
+      dateDiff = parseInt((1 / (monthMark - tempDate)) * 100000000000000)                       // ...get 3 fields for algorithm
       playbackCount = tracks[i].playback_count || 1         //
       favoritingsCount = tracks[i].favoritings_count || 1   // 
       dateDiffTotal += dateDiff                             // meanwhile keep the running totals for later use
@@ -50,13 +50,16 @@ function getTracks(){
     // run the algorithm to calculate rank
     for (var i = 0; i < tracksLen; i++){
       dateDiffPercentile = (tracks[i]['dateDiff'] / dateDiffTotal) * dateDiffWeighting; console.log(dateDiffPercentile)
+      tracks[i]['_dateDiffPercentile'] = (tracks[i]['dateDiff'] / dateDiffTotal) * dateDiffWeighting
       playbackPercentile = (tracks[i]['playbackCount'] / playbackTotal) * playbackWeighting; console.log(playbackPercentile)
+      tracks[i]['_playbackPercentile'] = (tracks[i]['playbackCount'] / playbackTotal) * playbackWeighting
       favoritingsPercentile = (tracks[i]['favoritingsCount'] / favoritingsTotal) * favoritingsWeighting; console.log(favoritingsPercentile)
-      rankScore = (dateDiffPercentile + playbackPercentile + favoritingsPercentile) * 100000000000000
+      tracks[i]['_favoritingsPercentile'] = (tracks[i]['favoritingsCount'] / favoritingsTotal) * favoritingsWeighting
+      rankScore = parseInt((dateDiffPercentile + playbackPercentile + favoritingsPercentile) * 10000)
       tracks[i]['rank'] = rankScore
     }
     //debug
-    console.log(tracks, dateDiffTotal, playbackTotal, favoritingsTotal)
+    console.log(dateDiffTotal, playbackTotal, favoritingsTotal)
     //sort by rank
     tracks = tracks.sort(sortBy('rank', false, parseInt));
 //    tracks = tracks.slice(0,20) //slice from the top
