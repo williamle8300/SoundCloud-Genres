@@ -10,7 +10,7 @@ SoundCloud Genres
 
 ### 1.0
 - refactor code
-- loading gif
+- loading gif, and 503 gif
 - refactor css
 
 ### 2.0

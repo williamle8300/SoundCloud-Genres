@@ -19,7 +19,7 @@ $(function() {
       if(e.which == 13) { // Enter key
           var value
           if($(this).val()){
-            value = $(this).val()
+            value = $(this).val().toLowerCase()
           }
           else {value = userPrompt}
         	$('input#queryBox').blur(function() {
