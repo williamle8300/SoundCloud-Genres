@@ -10,12 +10,12 @@ SoundCloud Genres
 
 ### 1.0
 - refactor code
-- loading gif, and 503 gif
 - refactor css
 
 ### 2.0
 - keyboard shortcuts
 	- use local storage for previous 2 (or more) searches
+	- loading gif, and 503 gif
 - add tag search
 - "next 10 tracks" button
 - add comment_count in ranking algorithm?

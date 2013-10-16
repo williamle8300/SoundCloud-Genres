@@ -18,7 +18,7 @@ SC.initialize({
 
 function getTracks(){
   $('ul.playlist').empty()
-  $('ul.playlist').html('<img id="loadGif" src="http://bradsknutson.com/wp-content/uploads/2013/04/page-loader.gif"/>')
+  $('ul.playlist').html('<img id="loadGif" src="http://www.traceinternational.org/images/loading4.gif"/>')
   SC.get('/tracks', filters, function(tracks){ //call out to SC servers
     if(tracks['errors']) {
       $('ul.playlist').empty()
