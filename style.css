@@ -1,12 +1,13 @@
-body{padding 0 0;background-color:#ddd;}
+body{padding 0 0;background-color:#ddd;font-family: Helvetica, sans-serif;}
 /**/
 .navbar{background-color:#F46800;color:#fff;border:0;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=97)";filter:alpha(opacity=97);-moz-opacity:0.97;-khtml-opacity:0.97;opacity:0.97;}
-.navbar .navbar-brand{color:#fff;}
+.navbar .navbar-brand{color:#fff;font-weight: bold;}
 .navbar .navbar-brand:hover{color:#ccc;}
 /**/
 input#queryBox{display:inline;background:transparent;border:none;color:white;font-weight:bold;outline:0;}
 .navbar{height:80px;padding-top:15px;-webkit-border-radius:0 !important;-moz-border-radius:0 !important;border-radius:0 !important;}
 .navbar-brand{font-size:3em;display:inline;padding-right:3px;}
+div#userQuery{}
 div#userQuery.btn-lg{display:inline-block;position:relative;top:-3px;margin-top:1px;padding:7px 15px;background-color:transparent;font-size:25px;font-weight:bold;border:3px white solid;}
 div#userQuery:hover{background-color:transparent;color:white;}
 /**/

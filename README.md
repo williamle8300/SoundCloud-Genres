@@ -2,16 +2,15 @@ SoundCloud Genres
 =================
 
 ## About
-Find the latest and greatest songs on SoundCloud. We're also thinking about offering a weekly email subscription service that will send you download links for the Top 4 in your favorite'd #genres.
+- focused on spotlighting the lastest, greatest unsigned musicians doing electronic music: house, ambient, dubstep, chill, dance, jungle, mash-ups.
+- focused on spotlighting the best remixes
+- offer a weekly email subscription service that will send you download links for the Top 4 in your favorite'd #genres.
 
 ## Upcoming
 
 ### 1.0
-- style!
-	- album cover
 - refactor code
 - loading gif
-- handle 'no results / 503' event
 - refactor css
 
 ### 2.0

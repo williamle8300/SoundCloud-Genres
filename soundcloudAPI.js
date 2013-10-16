@@ -7,7 +7,7 @@ var monthMark = new Date()
 //var SCmonthMark = '2013-01-01'
 var input = {query: '', getQuery: function(){return this.query}, setQuery: function(value){this.query = value; filters.tags = this.query} }
 var filters = {
-  tags: input.getQuery(),
+  q: input.getQuery(),
 //  limit: 200,
 //  created_at: {'from': SCmonthMark +' 00:00:00'}
 }
@@ -25,10 +25,10 @@ function getTracks(){
       $('ul.playlist').html('<h1>:(</h1>')
       return
     }  
-    var dateDiff = 0, dateDiffTotal = 0, dateDiffPercentile = 0, dateDiffWeighting = 2.5
+    var dateDiff = 0, dateDiffTotal = 0, dateDiffPercentile = 0, dateDiffWeighting = 8.5
     var tempDate
     var playbackCount = 0, playbackTotal = 0, playbackPercentile = 0, playbackWeighting = 1
-    var favoritingsCount = 0, favoritingsTotal = 0, favoritingsPercentile = 0, favoritingsWeighting = 1.3
+    var favoritingsCount = 0, favoritingsTotal = 0, favoritingsPercentile = 0, favoritingsWeighting = 1.5
     var rankScore
     var stagedTrack
     var tracksLen = tracks.length
@@ -61,7 +61,7 @@ function getTracks(){
     console.log(dateDiffTotal, playbackTotal, favoritingsTotal)
     //sort by rank
     tracks = tracks.sort(sortBy('rank', false, parseInt));
-//    tracks = tracks.slice(0,20) //slice from the top
+    tracks = tracks.slice(0,20) //slice from the top
     //render HTML page
     $('ul.playlist').empty()
     for(var i = 0; i < tracksLen; i++){          //
