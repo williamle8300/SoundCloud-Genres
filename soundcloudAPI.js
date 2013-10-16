@@ -30,6 +30,7 @@ function getTracks(){
     var playbackCount = 0, playbackTotal = 0, playbackPercentile = 0, playbackWeighting = 1
     var favoritingsCount = 0, favoritingsTotal = 0, favoritingsPercentile = 0, favoritingsWeighting = 1.5
     var rankScore
+    var topSlice = 50
     var stagedTrack
     var tracksLen = tracks.length
     // get and store into tracks[]
@@ -44,7 +45,7 @@ function getTracks(){
       favoritingsTotal += favoritingsCount                  //
       //get and store pertinent properties for each track
       stagedTrack = tracks[i]
-      tracks[i] = {createdAt: stagedTrack.created_at, dateDiff: dateDiff, playbackCount: playbackCount, favoritingsCount: favoritingsCount, title: stagedTrack.title, username: stagedTrack.user.username, streamURL: stagedTrack.stream_url, permalinkURL: stagedTrack.permalink_url, artworkURL: (stagedTrack.artwork_url)? stagedTrack.artwork_url : 'imgs/no_artwork.png', downloadURL: stagedTrack.download_url+'?consumer_key='+clientID}
+      tracks[i] = {createdAt: stagedTrack.created_at, dateDiff: dateDiff, playbackCount: playbackCount, favoritingsCount: favoritingsCount, title: stagedTrack.title, username: stagedTrack.user.username, streamURL: stagedTrack.stream_url, permalinkURL: stagedTrack.permalink_url, artworkURL: (stagedTrack.artwork_url)? stagedTrack.artwork_url : 'imgs/no_artwork-large.png', downloadURL: stagedTrack.download_url+'?consumer_key='+clientID}
     }
     // run the algorithm to calculate rank
     for (var i = 0; i < tracksLen; i++){
@@ -58,20 +59,16 @@ function getTracks(){
       tracks[i]['rank'] = rankScore
     }
     //debug
-    console.log(dateDiffTotal, playbackTotal, favoritingsTotal)
+    console.log(tracks, dateDiffTotal, playbackTotal, favoritingsTotal)
     //sort by rank
     tracks = tracks.sort(sortBy('rank', false, parseInt));
-    tracks = tracks.slice(0,20) //slice from the top
-    //render HTML page
+    //slice
+    tracks = tracks.slice(0,topSlice)
     $('ul.playlist').empty()
-    for(var i = 0; i < tracksLen; i++){          //
-      $('ul.playlist').append('<li><a type="audio/mp3" href="'+tracks[i].streamURL+'?consumer_key='+clientID+'"><div class="albumArt"><img src="'+tracks[i].artworkURL+'" width="100" height="100"></div><div class="track"><span class="trackTitle">'+tracks[i].title+'</span> <span class="trackUsername">'+tracks[i].username+'</span></div><div class="meta"><span class="glyphicon glyphicon-fire"></span> '+numberWithCommas(tracks[i].rank)+' &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-calendar"></span> '+dateFormat(tracks[i].createdAt, "ddd mmm-dS-yyyy")+' &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-music"></span> '+numberWithCommas(tracks[i].playbackCount)+' &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span> '+numberWithCommas(tracks[i].favoritingsCount)+'</div></a></li>')
+    //render HTML page
+    for(var i = 0; i < topSlice; i++){
+      stagedTrack = tracks[i]      
+      $('ul.playlist').append('<li><a type="audio/mp3" href="'+stagedTrack.streamURL+'?consumer_key='+clientID+'"><div class="albumArt"><img src="'+stagedTrack.artworkURL+'" width="100" height="100"></div><div class="track"><span class="trackTitle">'+stagedTrack.title+'</span> <span class="trackUsername">'+stagedTrack.username+'</span></div><div class="meta"><span class="glyphicon glyphicon-fire"></span> '+numberWithCommas(stagedTrack.rank)+' &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-calendar"></span> '+dateFormat(stagedTrack.createdAt, "ddd mmm-dS-yyyy")+' &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-music"></span> '+numberWithCommas(stagedTrack.playbackCount)+' &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span> '+numberWithCommas(stagedTrack.favoritingsCount)+'</div></a></li>')
     }
-    //debug
-    console.log(tracks, 'Track count: '+tracksLen)
   })
 }
-
-//<span class="trackRank">'+tracks[i].rank+'</span>
-
-
