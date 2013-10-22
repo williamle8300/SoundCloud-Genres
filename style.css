@@ -1,21 +1,26 @@
-body{padding:100px;background-color:#ddd;}
+body{padding:100px 0 0;background-color:#ddd;font-family: Helvetica, sans-serif;}
 /**/
-.navbar{background-color:#F46800;color:#fff;border:0;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=97)";filter:alpha(opacity=97);-moz-opacity:0.97;-khtml-opacity:0.97;opacity:0.97;}
-.navbar .navbar-brand{color:#fff;}
+.navbar{background-color:#F46800;color:#fff;border:0;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=94)";filter:alpha(opacity=94);-moz-opacity:0.94;-khtml-opacity:0.94;opacity:0.94;}
+.navbar .navbar-brand{color:#fff;font-weight: bold;}
 .navbar .navbar-brand:hover{color:#ccc;}
 /**/
 input#queryBox{display:inline;background:transparent;border:none;color:white;font-weight:bold;outline:0;}
 .navbar{height:80px;padding-top:15px;-webkit-border-radius:0 !important;-moz-border-radius:0 !important;border-radius:0 !important;}
 .navbar-brand{font-size:3em;display:inline;padding-right:3px;}
+div#userQuery{}
 div#userQuery.btn-lg{display:inline-block;position:relative;top:-3px;margin-top:1px;padding:7px 15px;background-color:transparent;font-size:25px;font-weight:bold;border:3px white solid;}
 div#userQuery:hover{background-color:transparent;color:white;}
 /**/
 #loadGif{display:block;margin:0 auto;}
 /**/
-ul.playlist li{background-color:#ddd !important;}
-ul.playlist li:hover{background-color:#eee !important;}
-ul.playlist li.sm2_playing,ul.playlist li.sm2_playing{background-color:#F46800!important;}
-ul.playlist li.sm2_playing,ul.playlist li.sm2_playing:hover{background-color:#F46800!important;}
-.trackRank{font-family:monospace;font-size:0.8em;}
-.trackTitle{font-weight:bold;font-size:0.8em;}
-.trackUsername{font-size:0.8em;}
+#tracksPage{position: relative;margin-top: -20px;}
+
+ul.playlist li.sm2_playing {
+position: fixed!important;
+right: 0px!important;
+top: 0px!important;
+z-index: 3;
+margin-top: 80px;
+border-top: 1px solid white;
+-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=94)";filter:alpha(opacity=94);-moz-opacity:0.94;-khtml-opacity:0.94;opacity:0.94;
+}
