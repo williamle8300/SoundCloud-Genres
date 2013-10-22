@@ -1,7 +1,5 @@
-// create socialRank
-// which is combined with dateDiff (now - created_at)
-// for rank
-// sort by rank
+//sort by plays, sort by likes, sort by recent
+
 var clientID = '212b7a5080f5d7f8e831583446771a02'
 var monthMark = new Date()
 //var SCmonthMark = '2013-01-01'
@@ -16,7 +14,7 @@ SC.initialize({
   client_id: clientID
 })
 
-function getTracks(){
+function getThenRenderTracks(){
   $('ul.playlist').empty()
   $('ul.playlist').html('<img id="loadGif" src="http://www.traceinternational.org/images/loading4.gif"/>')
   SC.get('/tracks', filters, function(tracks){ //call out to SC servers
@@ -35,15 +33,15 @@ function getTracks(){
     var tracksLen = tracks.length
     // get and store into tracks[]
     for (var i = 0; i < tracksLen; i++){
-      tempDate = (tracks[i].created_at.split(' '))[0].split('/')                             // get the milliseconds of created_at
-      tempDate = new Date(tempDate[1] +'/'+ tempDate[2] +'/'+ tempDate[0])                   //
-      dateDiff = parseInt((1 / (monthMark - tempDate)) * 100000000000000)                       // ...get 3 fields for algorithm
-      playbackCount = tracks[i].playback_count || 1         //
-      favoritingsCount = tracks[i].favoritings_count || 1   // 
-      dateDiffTotal += dateDiff                             // meanwhile keep the running totals for later use
-      playbackTotal += playbackCount                        //
-      favoritingsTotal += favoritingsCount                  //
-      //get and store pertinent properties for each track
+      tempDate = (tracks[i].created_at.split(' '))[0].split('/')                    // get the milliseconds of created_at
+      tempDate = new Date(tempDate[1] +'/'+ tempDate[2] +'/'+ tempDate[0])          //
+      dateDiff = parseInt((1 / (monthMark - tempDate)) * 100000000000000)           // ...get 3 fields for algorithm
+      playbackCount = tracks[i].playback_count || 1                                 //
+      favoritingsCount = tracks[i].favoritings_count || 1                           // 
+      dateDiffTotal += dateDiff                                                     // meanwhile keep the running totals for later use
+      playbackTotal += playbackCount                                                //
+      favoritingsTotal += favoritingsCount                                          //
+      //get and store pertinent properties for each track                           
       stagedTrack = tracks[i]
       tracks[i] = {createdAt: stagedTrack.created_at, dateDiff: dateDiff, playbackCount: playbackCount, favoritingsCount: favoritingsCount, title: stagedTrack.title, username: stagedTrack.user.username, streamURL: stagedTrack.stream_url, permalinkURL: stagedTrack.permalink_url, artworkURL: (stagedTrack.artwork_url)? stagedTrack.artwork_url : 'imgs/no_artwork-large.png', downloadURL: stagedTrack.download_url+'?consumer_key='+clientID}
     }
