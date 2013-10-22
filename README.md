@@ -2,13 +2,14 @@ SoundCloud Genres
 =================
 
 ## About
-- focused on spotlighting the lastest, greatest unsigned musicians doing electronic music: house, ambient, dubstep, chill, dance, jungle, mash-ups.
+- focused on spotlighting the latest, greatest unsigned musicians doing electronic music: house, ambient, dubstep, chill, dance, jungle, mash-ups.
 - focused on spotlighting the best remixes
 - offer a weekly email subscription service that will send you download links for the Top 4 in your favorite'd #genres.
 
 ## Upcoming
 
 ### 1.0
+- sort by plays, sort by likes, sort by recent
 - refactor code
 - refactor css
 
