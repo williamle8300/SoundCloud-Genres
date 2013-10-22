@@ -9,6 +9,7 @@ SoundCloud Genres
 ## Upcoming
 
 ### 1.0
+- sort by plays, sort by likes, sort by recent
 - refactor code
 - refactor css
 
