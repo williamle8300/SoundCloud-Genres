@@ -16,7 +16,7 @@ SC.initialize({
   client_id: clientID
 })
 
-function getTracks(){
+function getThenRenderTracks(){
   $('ul.playlist').empty()
   $('ul.playlist').html('<img id="loadGif" src="http://www.traceinternational.org/images/loading4.gif"/>')
   SC.get('/tracks', filters, function(tracks){ //call out to SC servers

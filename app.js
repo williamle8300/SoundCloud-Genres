@@ -9,7 +9,7 @@ $(function() {
       }
   }
   // load initial tracks
-  getTracks()
+  getThenRenderTracks()
   //#queryBox
   $("div#userQuery").click(function() {
     var userPrompt = $(this).text()
@@ -24,7 +24,7 @@ $(function() {
           else {value = userPrompt}
         	$('input#queryBox').blur(function() {
             input.setQuery(value)
-            getTracks()
+            getThenRenderTracks()
         		$('div#userQuery').text(value)
         	})
           $(this).blur()
