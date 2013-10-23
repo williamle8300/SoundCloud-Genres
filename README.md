@@ -36,3 +36,8 @@ SoundCloud Genres
 - allow user to change themes
 
 ### 4.0
+
+
+# Archived Snippets
+//var SCmonthMark = '2013-01-01'
+//var filters = { q: input.getQuery(), limit: 200, created_at: {'from': SCmonthMark +' 00:00:00'} }
