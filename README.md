@@ -24,7 +24,7 @@ SoundCloud Genres
 - allow user to filter:
 	- time span
 	- license 
-	- downlodable?
+	- downlodable?                                                                               
 		- download button
 - styling
 	- http://useiconic.com/concepts/styling/
